@@ -3,13 +3,56 @@
 using System;
 
 namespace BankApp {
-    class Program { 
+    class Program {
+
+        public class BankAccount
+        {
+            public int AccountNumber = 12345;
+            public string FirstName = "Bob";
+            public string LastName = "Smith";
+            public double Credit = 100;
+            public double Debit = 500;
+            public double Balance;
+            //variables are marked as public for now for convenience, will have to maket them private and use setters and getters later.
+
+        }
+
         static void Main(string[] args)
         {
-            int accNumber;
             Console.WriteLine("What is your Account Number?");
-            accNumber = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine($"Your Account Number is {accNumber}");
+            int accNumber = Convert.ToInt32(Console.ReadLine());
+            BankAccount bankaccount = new BankAccount();
+
+            string[] Commands = {"#1 - Check Debit Amount", "#2 - Check Credit Amount", "#3 - Check Balance", "#4 - Fun Fact?" };
+
+            if (accNumber == bankaccount.AccountNumber)
+            {
+                Console.WriteLine("Account Number Correct");
+                Thread.Sleep(500);
+                string fullName = bankaccount.FirstName + " " + bankaccount.LastName;
+                Console.WriteLine($"Hello, {fullName}");
+                Thread.Sleep(500);
+                Console.WriteLine("What would you like to do?");
+
+                for (int i = 0; i < Commands.Length; i++)
+                {
+                    Console.WriteLine(Commands[i]);
+                }
+                int Answer = Convert.ToInt32(Console.ReadLine());
+                --Answer;
+                Thread.Sleep(500);
+                Console.WriteLine("You have selected " + Commands[Answer]);
+
+
+                //Insert a Switch case here for each of the 4 options.
+
+
+            }
+            else 
+                Console.WriteLine("Invalid Account Number.");
+            
+
+            
 
             //there should be a BankAccount class that hosts members fName, lName, accountNum, balance, credit, & debits. Setters and getters should be setup for each
 
